@@ -1,0 +1,65 @@
+html, body, #Location-map{
+    min-height: 100%;
+    height:100%;
+}
+
+body { background: #A9A9A9; }
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    display: inline;
+}
+
+#Location-map
+{
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    width: 70%;
+    border-color: #005180;
+    border-width: 2px;
+    border-style: dashed;
+}
+
+#Geo-Info
+{
+    position: fixed;
+    right: 0%;
+    top: 0%;
+    width: 25%;
+    height: 15%;
+    background-color: #DCDCDC;
+    border-color: #708090;
+    border-width: 1px;
+    border-style: solid;
+}
+
+#user-add
+{
+    position: fixed;
+    right: 0%;
+    top: 16%;
+    width: 25%;
+    height: 15%;
+    background-color: #DCDCDC;
+    border-color: #708090;
+    border-width: 1px;
+    border-style: solid;
+}
+
+#UserData
+{
+    position: fixed;
+    right: 0%;
+    top: 32%;
+    width: 25%;
+    height: 15%;
+    background-color: #DCDCDC;
+    border-color: #708090;
+    border-width: 1px;
+    border-style: solid;
+}
