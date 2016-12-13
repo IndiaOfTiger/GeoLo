@@ -22,7 +22,7 @@ $(function(){
         var g = 40;
         var b = 40;
 
-        var $Name = $('#Name');
+        /* var $Name = $('#Name');
         var $Lat = $('#Lat');
         var $Lng = $('#Lng');
         $('#AddLo').on('click', function(){
@@ -38,9 +38,9 @@ $(function(){
                              error: function()
                              {alert('Error');}
                              });
-                            });
+                            }); */
 
-        function Color_O (data){
+        function Color_O (data)
             r = data[0];
             g = data[1];
             b = data[2];
