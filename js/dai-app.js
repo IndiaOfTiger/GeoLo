@@ -41,6 +41,7 @@ $(function(){
                             }); */
 
         function Color_O (data)
+        {
             r = data[0];
             g = data[1];
             b = data[2];
@@ -157,7 +158,7 @@ $(function(){
             //requestAnimationFrame(domUpdater);
 
         }
-        $('#id').on('click', function()
+        /*$('#id').on('click', function()
             getLocation();
             )
         function getLocation()
@@ -165,7 +166,7 @@ $(function(){
             document.getElementById('lat');
             document.getElementById('lng')
 
-        }
+        }*/
         setTimeout(iotUpdater, interval); // Will this cause loop?
         //requestAnimationFrame(domUpdater);
         /*
