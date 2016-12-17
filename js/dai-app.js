@@ -21,7 +21,8 @@ $(function(){
         var r = 40;
         var g = 40;
         var b = 40;
-
+        var lat;
+        var lng;
         /* var $Name = $('#Name');
         var $Lat = $('#Lat');
         var $Lng = $('#Lng');
@@ -45,9 +46,20 @@ $(function(){
             r = data[0];
             g = data[1];
             b = data[2];
+            console.log(data);
             changepinImage();
         }
 
+        function GeoLo_O (data)
+        {
+            lat = data[0];
+            lng = data[1];
+            console.log(data);
+            console.log("data[0]:", data[0]);
+            console.log("data[1]:", data[1]);
+            console.log("data[2]:", data[2]);
+
+        }
         function changepinImage()
         {
             //console.log('hi');
@@ -180,7 +192,7 @@ $(function(){
         window.onpagehide = detach;*/ // Didn't use , what's the purpose?
         var profile = {
             'dm_name': 'GeoLo',
-            'df_list': [Color_O],
+            'df_list': [Color_O, GeoLo_O],
         }
 
         var ida = {
