@@ -2,7 +2,7 @@ $(
     function initMap() {
         map = new google.maps.Map(document.getElementById('Location-map'), {
         center: {lat: 23.5832340, lng: 120.5825975},
-        zoom: 12});
+        zoom: 3});
     }
 );
 // $(function() function initMap()); Doesn't Work!
@@ -18,9 +18,9 @@ $(function(){
         var latDom = $('#lat > span');
         var lngDom = $('#lng > span');
         var centerRead = "" // Set Flag, We only update center once
-        var r = 40;
-        var g = 40;
-        var b = 40;
+        var r;
+        var g;
+        var b;
         var lat;
         var lng;
         var description;
@@ -48,7 +48,7 @@ $(function(){
             g = data[1];
             b = data[2];
             console.log(data);
-            changepinImage();
+            addMarker(lat, lng);
         }
         function Description_O (data)
         {
@@ -62,7 +62,7 @@ $(function(){
             console.log(data);
             console.log("data[0]:", data[0]);
             console.log("data[1]:", data[1]);
-            console.log("data[2]:", data[2]);
+            addMarker(lat, lng);
 
         }
         function changepinImage()
@@ -100,7 +100,7 @@ $(function(){
             latDom.text(output.lat);
             lngDom.text(output.lng);
             moveMapCenter();
-            addMarker(output.lat, output.lng);
+            //addMarker(output.lat, output.lng);
             requestAnimationFrame(domUpdater);
         }
         requestAnimationFrame(domUpdater); // Refresh Page
@@ -109,11 +109,19 @@ $(function(){
         {
             changepinImage();
             console.log(pinColor);
+            var infowindow = new google.maps.InfoWindow(
+               {
+                   content: description
+               });
             var marker = new google.maps.Marker({
                 position:{ lat: lat, lng: lng },
                 map: map, 
                 icon: pinImage,});
+            marker.addListener('click', function() {
+                               infowindow.open(map, marker);
+                               });
             markers.push(marker);
+
 
         }
 
@@ -131,7 +139,7 @@ $(function(){
             
             
         }
-        succesiveMarker();
+        //succesiveMarker();
         function setMapOnAll(map) {
           for (var i = 1; i < markers.length; i++) {
             markers[i].setMap(map);
@@ -151,7 +159,7 @@ $(function(){
             map.setZoom(zoom);
         }
         function moveMapCenter() {
-            moveToLocation(output.lat , output.lng , 12 );
+            moveToLocation(output.lat , output.lng , 3 );
 
         } 
         function showPosition(position) {
@@ -164,9 +172,9 @@ $(function(){
             if( navigator.geolocation )
             {
                 navigator.geolocation.getCurrentPosition(showPosition);
-                deleteMarkers();
+                //deleteMarkers();
                 i = 0;
-                succesiveMarker();
+                //succesiveMarker();
             }
         
             //if( window.d_name )
