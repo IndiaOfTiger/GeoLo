@@ -23,6 +23,7 @@ $(function(){
         var b = 40;
         var lat;
         var lng;
+        var description;
         /* var $Name = $('#Name');
         var $Lat = $('#Lat');
         var $Lng = $('#Lng');
@@ -49,7 +50,11 @@ $(function(){
             console.log(data);
             changepinImage();
         }
-
+        function Description_O (data)
+        {
+            description = data[0];
+            console.log(data);
+        }
         function GeoLo_O (data)
         {
             lat = data[0];
@@ -77,6 +82,7 @@ $(function(){
             r = 40;
             g = 40;
             b = 40;
+            
         }
         function componentToHex(c) {
             var hex = c.toString(16);
@@ -192,7 +198,7 @@ $(function(){
         window.onpagehide = detach;*/ // Didn't use , what's the purpose?
         var profile = {
             'dm_name': 'GeoLo',
-            'df_list': [Color_O, GeoLo_O],
+            'df_list': [Color_O, GeoLo_O, Description_O],
         }
 
         var ida = {
