@@ -62,18 +62,13 @@ $(function(){
         {
             description = data[0];
             console.log(data);
-            if(r == temp_r && g == temp_g && b == temp_b)
+            if((r == temp_r && g == temp_g && b == temp_b) && (lat == temp_lat && lng == temp_lng))
                 return;
             else
             {
                 temp_r = r;
                 temp_b = b;
                 temp_g = g;
-            }
-            if(lat == temp_lat && lng == temp_lng)
-                return;
-            else
-            {
                 temp_lng = lng;
                 temp_lat = lat;
             }
@@ -131,12 +126,16 @@ $(function(){
 
         function addMarker(lat, lng)
         {
+            if(lat == 0 && lng == 0)
+                return;
+            var index;
+            index = markers.length;
             var string;
             var _lat = lat;
             var _lng = lng;
             string = '('  + lat + ',' + lng + ')' + '\n';
             //markersDom.append(document.createTextNode(string));
-            markersDom.append(string);
+            markersDom.append('<button class=".btn-default delete" value = "'+index+'">'+string+'</button>');
             changepinImage();
             console.log(pinColor);
             var infowindow = new google.maps.InfoWindow(
@@ -154,6 +153,11 @@ $(function(){
 
 
         }
+        $(document).on('click', '.delete', function(){
+                $(this).remove();
+                index = $(this).val();
+                markers[index].setMap(null);
+            });
 
         //addMarker(output.lat, output.lng);
 
