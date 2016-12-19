@@ -4,6 +4,7 @@ $(
         center: {lat: 23.5832340, lng: 120.5825975},
         zoom: 3});
     }
+
 );
 // $(function() function initMap()); Doesn't Work!
 $(function(){
@@ -17,12 +18,18 @@ $(function(){
         var output = {lat: 23.5832340, lng:120.5825975};
         var latDom = $('#lat > span');
         var lngDom = $('#lng > span');
+        var markersDom = $('#markers > span');
         var centerRead = "" // Set Flag, We only update center once
         var r;
         var g;
         var b;
         var lat;
         var lng;
+        var temp_r;
+        var temp_g;
+        var temp_b;
+        var temp_lat;
+        var temp_lng;
         var description;
         /* var $Name = $('#Name');
         var $Lat = $('#Lat');
@@ -47,13 +54,31 @@ $(function(){
             r = data[0];
             g = data[1];
             b = data[2];
+            
             console.log(data);
-            addMarker(lat, lng);
+            //addMarker(lat, lng);
         }
         function Description_O (data)
         {
             description = data[0];
             console.log(data);
+            if(r == temp_r && g == temp_g && b == temp_b)
+                return;
+            else
+            {
+                temp_r = r;
+                temp_b = b;
+                temp_g = g;
+            }
+            if(lat == temp_lat && lng == temp_lng)
+                return;
+            else
+            {
+                temp_lng = lng;
+                temp_lat = lat;
+            }
+            addMarker(lat, lng);
+
         }
         function GeoLo_O (data)
         {
@@ -62,7 +87,6 @@ $(function(){
             console.log(data);
             console.log("data[0]:", data[0]);
             console.log("data[1]:", data[1]);
-            addMarker(lat, lng);
 
         }
         function changepinImage()
@@ -107,6 +131,12 @@ $(function(){
 
         function addMarker(lat, lng)
         {
+            var string;
+            var _lat = lat;
+            var _lng = lng;
+            string = '('  + lat + ',' + lng + ')' + '\n';
+            //markersDom.append(document.createTextNode(string));
+            markersDom.append(string);
             changepinImage();
             console.log(pinColor);
             var infowindow = new google.maps.InfoWindow(
@@ -136,8 +166,6 @@ $(function(){
                 setTimeout( succesiveMarker, 2000 );
                 i++;
             }
-            
-            
         }
         //succesiveMarker();
         function setMapOnAll(map) {
